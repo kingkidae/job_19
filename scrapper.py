@@ -19,7 +19,7 @@ lis = soup.find_all("li", class_ = "c_col")
 jobs = []
 for li in lis:
     try:
-        company = li.find("a", class_ = "cpname").text
+        company = li.find("a", class_ = "cpname").text # a태그는 우리가 마우스 클릭하기 전에 손모양으로 바뀌면서 클릭할 수 있게 되는게 a임.
         title  = li.find("div", class_ = "cell_mid").find("a").text
         location = li.find("div", class_ = "cl_md").find_all("span")[0].text
         link = li.find("div", class_ = "cell_mid").find("a").get("href")
