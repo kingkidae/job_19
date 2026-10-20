@@ -1,3 +1,25 @@
 import requests
-r = requests.get('https://search.incruit.com/list/search.asp?col=job&kw=%C0%CE%BB%E7%C3%D1%B9%AB&psize=60')
-print(r.status_code) #코드 뒤에 괄호가 없으면 속성, 괄호가 있으면 함수
+keyword = "인사총무"
+url = f"https://search.incruit.com/list/search.asp?col=job&kw={keyword}&psize=60"
+r = requests.get(url)
+'''
+https://search.incruit.com/list/search.asp 여기까지가 URL임.
+col 이라는 파라미터와 kw라는 파라미터가 &으로 묶여있음.
+'''
+#print(r.status_code) #코드 뒤에 괄호가 없으면 속성, 괄호가 있으면 함수
+#print(r.text)
+#특정한 데이터를 빠르고 편하게 가지고 올 수 있는 뷰티풀 수프 설치
+from bs4 import BeautifulSoup
+# 프롬 뒤에는 모듈(파일), 임포트 뒤에는 함수를 적음.
+soup = BeautifulSoup(r.text, "html.parser")
+#print(soup.prettify())
+lis = soup.find_all("li", class_ = "c_col")
+print(lis)
+#print(len(lis)) 몇개인지 봄.
+for li in lis:
+    try:
+        company = li.find("a", class_ = "cpname").text
+        print(company)
+    except:
+        pass
+#하나를 찾는 메소드 find , 다 찾는거 find_all / .text는 내가 필요한것만 보여줌.
