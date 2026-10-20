@@ -14,12 +14,30 @@ from bs4 import BeautifulSoup
 soup = BeautifulSoup(r.text, "html.parser")
 #print(soup.prettify())
 lis = soup.find_all("li", class_ = "c_col")
-print(lis)
+#print(lis) #공고문 저거 다 찾아서 표시해라라는 뜻
 #print(len(lis)) 몇개인지 봄.
+jobs = []
 for li in lis:
     try:
         company = li.find("a", class_ = "cpname").text
-        print(company)
+        title  = li.find("div", class_ = "cell_mid").find("a").text
+        location = li.find("div", class_ = "cl_md").find_all("span")[0].text
+        link = li.find("div", class_ = "cell_mid").find("a").get("href")
+        #하나를 찾는 메소드 find , 다 찾는거 find_all / .text는 내가 필요한것만 보여줌.
+        #print(company) #회사명
+        #print(title) # 공고제목
+        #print(location) # 업체 위치
+        #print(link) # 공고링크
+        job_data = {
+            "company" : company,
+            "title" : title,
+            "location" : location,
+            "link" : link
+        }
+        jobs.append(job_data)
+
     except:
         pass
-#하나를 찾는 메소드 find , 다 찾는거 find_all / .text는 내가 필요한것만 보여줌.
+
+print(jobs)
+print(len(jobs))
