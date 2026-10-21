@@ -1,37 +1,29 @@
-<html>
-<head></head>
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ keyword }} 채용 검색 | 잡모아</title>
+  <style>
+    :root{--blue:#315efb;--ink:#182230;--muted:#697586;--line:#e5e9f0;--bg:#f5f7fb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Malgun Gothic",sans-serif}a{color:inherit;text-decoration:none}.top{height:40px;background:#f0f2f7;border-bottom:1px solid #e6e8ef;color:#657086;font-size:12px}.topin,.nav,.main{max-width:1120px;margin:auto}.topin{height:100%;display:flex;align-items:center;justify-content:flex-end;gap:22px}.nav{height:76px;display:flex;align-items:center;gap:40px}.brand{font-size:25px;font-weight:900;color:var(--blue);letter-spacing:-1.5px}.links{display:flex;gap:26px;font-weight:700;font-size:14px}.links a:first-child{color:var(--blue)}.user{margin-left:auto;color:#596579;font-size:13px}.searchbar{background:#fff;border:1px solid var(--line);padding:18px 0}.searchbar form{max-width:800px;margin:auto;height:52px;border:2px solid var(--blue);border-radius:9px;display:flex;padding:5px 6px 5px 15px}.searchbar input{border:0;outline:0;flex:1;min-width:0;font-size:15px}.searchbar button{border:0;background:var(--blue);color:#fff;font-weight:700;border-radius:6px;padding:0 23px;cursor:pointer}.main{padding:30px 0 70px}.crumb{font-size:12px;color:#98a1af;margin-bottom:16px}.heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:21px}.heading h1{margin:0;font-size:25px;letter-spacing:-.8px}.heading h1 em{font-style:normal;color:var(--blue)}.count{font-size:13px;color:#697586}.count b{color:var(--blue);font-size:17px}.filters{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:22px;overflow:hidden}.filterrow{display:flex;align-items:center;gap:11px;padding:15px 18px;border-bottom:1px solid #edf0f4}.filterrow:last-child{border-bottom:0}.filterlabel{width:65px;flex:none;font-size:13px;font-weight:700}.filterchip{font-size:12px;color:#586476;background:#f6f7f9;border:1px solid #e8ebf0;border-radius:20px;padding:7px 12px}.filterchip.active{color:var(--blue);background:#eef2ff;border-color:#dbe3ff}.resulthead{display:flex;align-items:center;justify-content:space-between;margin:0 2px 12px}.resulthead strong{font-size:17px}.resulthead span{font-size:12px;color:#8992a0}.layout{display:grid;grid-template-columns:1fr 270px;gap:18px}.list{display:flex;flex-direction:column;gap:11px}.job{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px 22px;transition:.15s}.job:hover{border-color:#b9c8ff;box-shadow:0 8px 22px #2848a00c}.jobtop{display:flex;justify-content:space-between;gap:15px}.company{font-size:13px;color:#697586;font-weight:700;margin-bottom:9px}.title{font-size:17px;font-weight:800;line-height:1.45;letter-spacing:-.3px}.scrap{border:1px solid var(--line);color:#6e7785;background:#fff;border-radius:7px;padding:7px 10px;height:34px;white-space:nowrap}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;color:#687386;font-size:12px}.meta span{padding-right:9px;border-right:1px solid #e5e8ed}.meta span:last-child{border:0}.jobbottom{display:flex;align-items:center;justify-content:space-between;margin-top:17px;padding-top:13px;border-top:1px solid #f0f1f4}.deadline{color:#667085;font-size:12px}.apply{color:var(--blue);font-size:12px;font-weight:700}.side{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;height:max-content}.side h2{font-size:15px;margin:0 0 16px}.side p{font-size:13px;color:#737e8f;line-height:1.7;margin:0 0 16px}.side a{display:block;text-align:center;background:#eef2ff;color:var(--blue);font-weight:700;padding:11px;border-radius:7px;font-size:13px}.empty{background:#fff;border:1px solid var(--line);padding:50px;text-align:center;border-radius:12px;color:#778193}.empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:8px}@media(max-width:800px){.topin,.nav,.main{margin-left:18px;margin-right:18px}.searchbar form{margin-left:18px;margin-right:18px}.nav{gap:18px}.links{gap:12px}.layout{grid-template-columns:1fr}.side{display:none}.main{padding-top:23px}}@media(max-width:520px){.links{display:none}.heading{display:block}.count{margin-top:10px}.filterrow{flex-wrap:wrap}.filterlabel{width:100%}.job{padding:18px}.title{font-size:15px}}
+  </style>
+</head>
 <body>
-    <h1>{{ keyword }} 잡서치 결과 페이지입니다.</h1>
-    <!-- html안에서 코드형식으로 쓸 때에는 두가지 방법이 있다. -->
-     <!-- 파이썬은 주석처리가 안됨 -->
-    <table>
-        <thead>
-            <!-- 실제적으로 그림 그려지는게 아님. 구분자 정도로 이해하셈. -->
-            <tr>
-                <!-- tr은 하나의 라인이 그려졌다고 생각해라. -->
-                <th>순번</th>
-                <th>회사명</th>
-                <th>공고제목</th>
-                <th>회사위치</th>
-                <th>상세보기</th>
-                <!-- th는 한 셀에서 하나하나를 뜻함. -->
-            </tr>
-        </thead>
-        <!-- 머릿글 -->
-         <tbody>
-            <!-- 얘도 구분자 -->
-             {% for index, job in jobs %}
-            <tr>
-                <!-- 얘는 하나의 행임 -->
-                <td>{{ index + 1 }}</td>
-                <td>{{ job["company"] }}</td>
-                <td>{{ job["title"] }}</td>
-                <td>{{ job["location"] }}</td>
-                <td>{{ job["link"]}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
+  <div class="top"><div class="topin"><a href="#">기업서비스</a><a href="#">이력서 등록</a><a href="#">로그인</a><a href="#">회원가입</a></div></div>
+  <header class="nav"><a class="brand" href="/">잡모아</a><nav class="links"><a href="/">채용정보</a><a href="/">직무별</a><a href="/">지역별</a><a href="/">커리어</a></nav><div class="user">나에게 맞는 일자리 찾기</div></header>
+  <div class="searchbar"><form action="/search" method="get"><input type="search" name="keyword" value="{{ keyword }}" placeholder="회사명, 직무, 지역을 입력하세요" aria-label="채용 검색어"><button type="submit">검색</button></form></div>
+  <main class="main">
+    <div class="crumb"><a href="/">홈</a>　›　채용정보　›　검색결과</div>
+    <div class="heading"><h1><em>{{ keyword }}</em> 채용정보</h1><div class="count">검색 결과 <b>{{ jobs|length }}</b>건</div></div>
+    <section class="filters"><div class="filterrow"><div class="filterlabel">근무지역</div><a class="filterchip active" href="#">전체</a><a class="filterchip" href="#">서울</a><a class="filterchip" href="#">경기</a><a class="filterchip" href="#">인천</a><a class="filterchip" href="#">부산</a><a class="filterchip" href="#">지역 더보기 +</a></div><div class="filterrow"><div class="filterlabel">경력·형태</div><a class="filterchip active" href="#">전체</a><a class="filterchip" href="#">신입</a><a class="filterchip" href="#">경력</a><a class="filterchip" href="#">정규직</a><a class="filterchip" href="#">계약직</a><a class="filterchip" href="#">인턴</a></div></section>
+    <div class="resulthead"><strong>채용 공고</strong><span>최신 등록순　⌄</span></div>
+    <div class="layout"><section class="list">
+      {% for index, job in jobs %}
+      <article class="job"><div class="jobtop"><div><div class="company">{{ job["company"] }}</div><a class="title" href="{{ job['link'] }}" target="_blank" rel="noopener">{{ job["title"] }}</a></div><button class="scrap" type="button" aria-label="공고 스크랩">☆ 스크랩</button></div><div class="meta"><span>{{ job["location"] }}</span><span>경력무관</span><span>학력무관</span><span>정규직</span></div><div class="jobbottom"><span class="deadline">채용 공고 {{ index + 1 }}</span><a class="apply" href="{{ job['link'] }}" target="_blank" rel="noopener">공고 자세히 보기 →</a></div></article>
+      {% else %}
+      <div class="empty"><b>검색 결과가 없습니다.</b>검색어를 바꾸거나 다른 직무를 검색해 보세요.</div>
+      {% endfor %}
+    </section><aside class="side"><h2>원하는 일자리를 찾고 있나요?</h2><p>관심 키워드를 바꿔 더 많은 채용 공고를 확인해 보세요.</p><a href="/">다른 키워드 검색하기</a></aside></div>
+  </main>
 </body>
 </html>
