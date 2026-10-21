@@ -2,6 +2,36 @@
 <head></head>
 <body>
     <h1>{{ keyword }} 잡서치 결과 페이지입니다.</h1>
-    {{ jobs }}
+    <!-- html안에서 코드형식으로 쓸 때에는 두가지 방법이 있다. -->
+     <!-- 파이썬은 주석처리가 안됨 -->
+    <table>
+        <thead>
+            <!-- 실제적으로 그림 그려지는게 아님. 구분자 정도로 이해하셈. -->
+            <tr>
+                <!-- tr은 하나의 라인이 그려졌다고 생각해라. -->
+                <th>순번</th>
+                <th>회사명</th>
+                <th>공고제목</th>
+                <th>회사위치</th>
+                <th>상세보기</th>
+                <!-- th는 한 셀에서 하나하나를 뜻함. -->
+            </tr>
+        </thead>
+        <!-- 머릿글 -->
+         <tbody>
+            <!-- 얘도 구분자 -->
+             {% for index, job in jobs %}
+            <tr>
+                <!-- 얘는 하나의 행임 -->
+                <td>{{ index + 1 }}</td>
+                <td>{{ job["company"] }}</td>
+                <td>{{ job["title"] }}</td>
+                <td>{{ job["location"] }}</td>
+                <td>{{ job["link"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 </body>
 </html>

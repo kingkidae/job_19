@@ -1,15 +1,16 @@
 import requests #리퀘스트라는 내부 기능을 불러옴.
-keyword = "인사총무"
+#keyword = "인사총무" # 고정시키지않고 지울것임.
+#keyword = keyword # 앱피와이에서 온 키워드
 pages = 5
 page = pages * 60
-url = f"https://search.incruit.com/list/search.asp?col=job&kw={keyword}&psize=60&startno={page}" 
-    #인크루트 공고페이지 긁어오는데 kw=키워드인데 내 키워드를 위에서 변수 설정 해줬으니 중괄호하고 키워드 넣어주고, 페이지도 넣어줌.
-jobs = []
+def search_incruit(keyword, pages = 1):
+    jobs = []
 # 변수들을 설정하기.
-def search_incruit():
-
     for page in range(pages): #1페이지만 할 것이 아니기 때문에 저 페이지를 페이지스에 세팅된 값(5니까 0,1,2,3,4)까지 반복해주는거임.
+        url = f"https://search.incruit.com/list/search.asp?col=job&kw={keyword}&psize=60&startno={page}" 
         r = requests.get(url)#원래 url을 다 넣어야 되는데 그러면 복잡하고, 각 페이지별로 다 따로 넣어야 하니까 생노가다라서 변수 넣어주면 한번에 해결 가능함.
+    #인크루트 공고페이지 긁어오는데 kw=키워드인데 내 키워드를 위에서 변수 설정 해줬으니 중괄호하고 키워드 넣어주고, 페이지도 넣어줌.
+
         '''
         https://search.incruit.com/list/search.asp 여기까지가 URL임.
         col 이라는 파라미터와 kw라는 파라미터가 &으로 묶여있음.
@@ -48,7 +49,8 @@ def search_incruit():
             except: #시도 해보고 아니면
                 pass #넘겨라.
 
-        #print(jobs)
-        #print(len(jobs))
-        print(f"{page + 1} 크롤링 중...")
+        #print(jobs) # 크롤링한 정보 보기
+        #print(len(jobs)) # 정보 갯수..
+        print(f"{page + 1} 크롤링 중...") #간지용..?
     return jobs
+#데이터를 가지고 오는 역할
