@@ -21,6 +21,6 @@ def search():
     return render_template("search.html", keyword = keyword, jobs = enumerate(jobs)) #서치.html에 키워드를 같이 보내는 것임.
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) #디버그 트루를 하면 코딩을 하고 수정하고 저장하면 자동으로 업데이트해줌.
 #여기서 서버가 돌아가는 것임.
 #http://127.0.0.1:5000 여기로 들어갈 수 있고, localhst:5000으로도 페이지에 들어갈 수 있음.
