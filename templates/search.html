@@ -1,29 +1,176 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ keyword }} 채용 검색 | 잡모아</title>
-  <style>
-    :root{--blue:#315efb;--ink:#182230;--muted:#697586;--line:#e5e9f0;--bg:#f5f7fb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Malgun Gothic",sans-serif}a{color:inherit;text-decoration:none}.top{height:40px;background:#f0f2f7;border-bottom:1px solid #e6e8ef;color:#657086;font-size:12px}.topin,.nav,.main{max-width:1120px;margin:auto}.topin{height:100%;display:flex;align-items:center;justify-content:flex-end;gap:22px}.nav{height:76px;display:flex;align-items:center;gap:40px}.brand{font-size:25px;font-weight:900;color:var(--blue);letter-spacing:-1.5px}.links{display:flex;gap:26px;font-weight:700;font-size:14px}.links a:first-child{color:var(--blue)}.user{margin-left:auto;color:#596579;font-size:13px}.searchbar{background:#fff;border:1px solid var(--line);padding:18px 0}.searchbar form{max-width:800px;margin:auto;height:52px;border:2px solid var(--blue);border-radius:9px;display:flex;padding:5px 6px 5px 15px}.searchbar input{border:0;outline:0;flex:1;min-width:0;font-size:15px}.searchbar button{border:0;background:var(--blue);color:#fff;font-weight:700;border-radius:6px;padding:0 23px;cursor:pointer}.main{padding:30px 0 70px}.crumb{font-size:12px;color:#98a1af;margin-bottom:16px}.heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:21px}.heading h1{margin:0;font-size:25px;letter-spacing:-.8px}.heading h1 em{font-style:normal;color:var(--blue)}.count{font-size:13px;color:#697586}.count b{color:var(--blue);font-size:17px}.filters{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:22px;overflow:hidden}.filterrow{display:flex;align-items:center;gap:11px;padding:15px 18px;border-bottom:1px solid #edf0f4}.filterrow:last-child{border-bottom:0}.filterlabel{width:65px;flex:none;font-size:13px;font-weight:700}.filterchip{font-size:12px;color:#586476;background:#f6f7f9;border:1px solid #e8ebf0;border-radius:20px;padding:7px 12px}.filterchip.active{color:var(--blue);background:#eef2ff;border-color:#dbe3ff}.resulthead{display:flex;align-items:center;justify-content:space-between;margin:0 2px 12px}.resulthead strong{font-size:17px}.resulthead span{font-size:12px;color:#8992a0}.layout{display:grid;grid-template-columns:1fr 270px;gap:18px}.list{display:flex;flex-direction:column;gap:11px}.job{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px 22px;transition:.15s}.job:hover{border-color:#b9c8ff;box-shadow:0 8px 22px #2848a00c}.jobtop{display:flex;justify-content:space-between;gap:15px}.company{font-size:13px;color:#697586;font-weight:700;margin-bottom:9px}.title{font-size:17px;font-weight:800;line-height:1.45;letter-spacing:-.3px}.scrap{border:1px solid var(--line);color:#6e7785;background:#fff;border-radius:7px;padding:7px 10px;height:34px;white-space:nowrap}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;color:#687386;font-size:12px}.meta span{padding-right:9px;border-right:1px solid #e5e8ed}.meta span:last-child{border:0}.jobbottom{display:flex;align-items:center;justify-content:space-between;margin-top:17px;padding-top:13px;border-top:1px solid #f0f1f4}.deadline{color:#667085;font-size:12px}.apply{color:var(--blue);font-size:12px;font-weight:700}.side{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;height:max-content}.side h2{font-size:15px;margin:0 0 16px}.side p{font-size:13px;color:#737e8f;line-height:1.7;margin:0 0 16px}.side a{display:block;text-align:center;background:#eef2ff;color:var(--blue);font-weight:700;padding:11px;border-radius:7px;font-size:13px}.empty{background:#fff;border:1px solid var(--line);padding:50px;text-align:center;border-radius:12px;color:#778193}.empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:8px}@media(max-width:800px){.topin,.nav,.main{margin-left:18px;margin-right:18px}.searchbar form{margin-left:18px;margin-right:18px}.nav{gap:18px}.links{gap:12px}.layout{grid-template-columns:1fr}.side{display:none}.main{padding-top:23px}}@media(max-width:520px){.links{display:none}.heading{display:block}.count{margin-top:10px}.filterrow{flex-wrap:wrap}.filterlabel{width:100%}.job{padding:18px}.title{font-size:15px}}
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ keyword }} 채용정보 - Job Scrapper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --blue: #1a5ae0;
+            --blue-dark: #0f45b8;
+            --line: #e1e4ea;
+            --text: #222;
+            --sub: #767b85;
+            --bg: #f4f6f9;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+            color: var(--text);
+            background: var(--bg);
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* 상단 헤더 + 검색창 */
+        .gnb { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+        .gnb-inner {
+            max-width: 1100px; margin: 0 auto; padding: 0 20px;
+            height: 76px; display: flex; align-items: center; gap: 32px;
+        }
+        .logo { font-size: 22px; font-weight: 900; color: var(--blue); letter-spacing: -0.5px; white-space: nowrap; }
+        .logo span { color: var(--text); }
+        .search-box {
+            flex: 1; max-width: 560px;
+            display: flex;
+            border: 2px solid var(--blue);
+            border-radius: 28px;
+            overflow: hidden;
+        }
+        .search-box input {
+            flex: 1; min-width: 0; border: 0; outline: 0;
+            padding: 0 20px; height: 44px;
+            font-size: 16px; font-family: inherit;
+        }
+        .search-box button {
+            border: 0; background: var(--blue); color: #fff;
+            font-size: 15px; font-weight: 700; font-family: inherit;
+            padding: 0 24px; cursor: pointer;
+        }
+        .search-box button:hover { background: var(--blue-dark); }
+
+        /* 탭 */
+        .tabs { background: #fff; border-bottom: 1px solid var(--line); }
+        .tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; gap: 28px; }
+        .tabs a {
+            padding: 14px 0; font-size: 15px; font-weight: 500; color: var(--sub);
+            border-bottom: 3px solid transparent;
+        }
+        .tabs a.on { color: var(--blue); border-bottom-color: var(--blue); font-weight: 700; }
+
+        /* 결과 */
+        .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+        .result-head {
+            display: flex; align-items: flex-end; justify-content: space-between;
+            margin-bottom: 14px; gap: 12px; flex-wrap: wrap;
+        }
+        .result-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+        .result-head h2 strong { color: var(--blue); }
+        .result-head h2 small { font-size: 15px; font-weight: 500; color: var(--sub); margin-left: 6px; }
+        .result-head h2 small b { color: var(--blue); }
+
+        .job-list { list-style: none; background: #fff; border: 1px solid var(--line); border-top: 2px solid var(--text); }
+        .job-item {
+            display: grid;
+            grid-template-columns: 48px 200px 1fr 120px;
+            align-items: center;
+            gap: 20px;
+            padding: 22px 24px;
+            border-bottom: 1px solid var(--line);
+            transition: background 0.15s;
+        }
+        .job-item:last-child { border-bottom: 0; }
+        .job-item:hover { background: #f7faff; }
+        .num { color: var(--sub); font-size: 14px; text-align: center; }
+        .company { font-size: 15px; font-weight: 700; line-height: 1.4; word-break: keep-all; }
+        .title {
+            display: block; font-size: 17px; font-weight: 500; line-height: 1.45;
+            margin-bottom: 8px; word-break: keep-all;
+        }
+        .title:hover { color: var(--blue); text-decoration: underline; }
+        .meta { display: flex; gap: 6px; flex-wrap: wrap; }
+        .meta span {
+            font-size: 13px; color: var(--sub);
+            background: var(--bg); border-radius: 3px; padding: 2px 8px;
+        }
+        .apply {
+            display: block; text-align: center;
+            border: 1px solid var(--blue); color: var(--blue);
+            border-radius: 4px; padding: 9px 0;
+            font-size: 14px; font-weight: 700;
+        }
+        .apply:hover { background: var(--blue); color: #fff; }
+
+        .empty {
+            background: #fff; border: 1px solid var(--line); border-top: 2px solid var(--text);
+            text-align: center; padding: 80px 20px; color: var(--sub);
+        }
+        .empty strong { display: block; font-size: 18px; color: var(--text); margin-bottom: 8px; }
+
+        footer {
+            text-align: center; color: var(--sub); font-size: 13px;
+            padding: 24px 20px; border-top: 1px solid var(--line); background: #fff;
+        }
+
+        @media (max-width: 760px) {
+            .gnb-inner { height: auto; padding-block: 12px; flex-direction: column; align-items: stretch; gap: 10px; }
+            .search-box { max-width: none; }
+            .job-item { grid-template-columns: 1fr; gap: 6px; padding: 18px; }
+            .num { display: none; }
+            .company { font-size: 14px; color: var(--sub); font-weight: 500; }
+            .apply { margin-top: 8px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="top"><div class="topin"><a href="#">기업서비스</a><a href="#">이력서 등록</a><a href="#">로그인</a><a href="#">회원가입</a></div></div>
-  <header class="nav"><a class="brand" href="/">잡모아</a><nav class="links"><a href="/">채용정보</a><a href="/">직무별</a><a href="/">지역별</a><a href="/">커리어</a></nav><div class="user">나에게 맞는 일자리 찾기</div></header>
-  <div class="searchbar"><form action="/search" method="get"><input type="search" name="keyword" value="{{ keyword }}" placeholder="회사명, 직무, 지역을 입력하세요" aria-label="채용 검색어"><button type="submit">검색</button></form></div>
-  <main class="main">
-    <div class="crumb"><a href="/">홈</a>　›　채용정보　›　검색결과</div>
-    <div class="heading"><h1><em>{{ keyword }}</em> 채용정보</h1><div class="count">검색 결과 <b>{{ jobs|length }}</b>건</div></div>
-    <section class="filters"><div class="filterrow"><div class="filterlabel">근무지역</div><a class="filterchip active" href="#">전체</a><a class="filterchip" href="#">서울</a><a class="filterchip" href="#">경기</a><a class="filterchip" href="#">인천</a><a class="filterchip" href="#">부산</a><a class="filterchip" href="#">지역 더보기 +</a></div><div class="filterrow"><div class="filterlabel">경력·형태</div><a class="filterchip active" href="#">전체</a><a class="filterchip" href="#">신입</a><a class="filterchip" href="#">경력</a><a class="filterchip" href="#">정규직</a><a class="filterchip" href="#">계약직</a><a class="filterchip" href="#">인턴</a></div></section>
-    <div class="resulthead"><strong>채용 공고</strong><span>최신 등록순　⌄</span></div>
-    <div class="layout"><section class="list">
-      {% for index, job in jobs %}
-      <article class="job"><div class="jobtop"><div><div class="company">{{ job["company"] }}</div><a class="title" href="{{ job['link'] }}" target="_blank" rel="noopener">{{ job["title"] }}</a></div><button class="scrap" type="button" aria-label="공고 스크랩">☆ 스크랩</button></div><div class="meta"><span>{{ job["location"] }}</span><span>경력무관</span><span>학력무관</span><span>정규직</span></div><div class="jobbottom"><span class="deadline">채용 공고 {{ index + 1 }}</span><a class="apply" href="{{ job['link'] }}" target="_blank" rel="noopener">공고 자세히 보기 →</a></div></article>
-      {% else %}
-      <div class="empty"><b>검색 결과가 없습니다.</b>검색어를 바꾸거나 다른 직무를 검색해 보세요.</div>
-      {% endfor %}
-    </section><aside class="side"><h2>원하는 일자리를 찾고 있나요?</h2><p>관심 키워드를 바꿔 더 많은 채용 공고를 확인해 보세요.</p><a href="/">다른 키워드 검색하기</a></aside></div>
-  </main>
+    <header class="gnb">
+        <div class="gnb-inner">
+            <a href="/" class="logo">Job<span>Scrapper</span></a>
+            <form action="/search" class="search-box">
+                <input type="text" name="keyword" value="{{ keyword }}" placeholder="직무, 회사, 키워드를 입력하세요" required />
+                <button>검색</button>
+            </form>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <div class="tabs-inner">
+            <a href="#" class="on">채용정보</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        {# app.py에서 넘어온 enumerate는 한 번만 순회 가능하므로 리스트로 바꿔서 개수도 구함 #}
+        {% set jobs = jobs | list %}
+        <div class="result-head">
+            <h2>'<strong>{{ keyword }}</strong>' 검색결과 <small>채용정보 <b>{{ jobs | length }}</b>건</small></h2>
+        </div>
+
+        {% if jobs %}
+        <ul class="job-list">
+            {% for index, job in jobs %}
+            <li class="job-item">
+                <div class="num">{{ index + 1 }}</div>
+                <div class="company">{{ job["company"] }}</div>
+                <div>
+                    <a href="{{ job['link'] }}" target="_blank" rel="noopener" class="title">{{ job["title"] }}</a>
+                    <div class="meta">
+                        <span>📍 {{ job["location"] }}</span>
+                    </div>
+                </div>
+                <a href="{{ job['link'] }}" target="_blank" rel="noopener" class="apply">상세보기</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="empty">
+            <strong>검색 결과가 없습니다.</strong>
+            다른 키워드로 다시 검색해 보세요.
+        </div>
+        {% endif %}
+    </main>
+
+    <footer>© Job Scrapper · 채용정보 출처: 인크루트</footer>
 </body>
 </html>
